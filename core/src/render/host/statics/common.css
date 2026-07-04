@@ -1,0 +1,104 @@
+:root {
+    overflow-wrap: break-word;
+    color-scheme: light dark;
+    font-variant-emoji: text;
+    font-family: sans-serif;
+    --highlight-chromaticity: 0.12;
+    --code-secondary-chromaticity: 0.09;
+    --badge-bg-chromaticity: 0.02;
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-lightness: 0.95;
+        --main-lightness: 0.26;
+        --lowkey-lightness: 0.51;
+        --highlight-lightness: 0.42;
+        --code-secondary-lightness: 0.47;
+        --code-bg-lightness: 0.90;
+        --badge-bg-lightness: 0.90;
+        --badge-fg-lightness: 0.42;
+        --link-bg-lightness: 0.95;
+        --link-bg-chromaticity: 0.035;
+    }
+
+    .main-link {
+        background-color: oklch(var(--link-bg-lightness) var(--link-bg-chromaticity) var(--hue));
+    }
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-lightness: 0.21;
+        --main-lightness: 0.9;
+        --lowkey-lightness: 0.65;
+        --highlight-lightness: 0.735;
+        --code-secondary-lightness: 0.7;
+        --code-bg-lightness: 0.27;
+        --badge-bg-lightness: 0.32;
+        --badge-fg-lightness: 0.80;
+        --link-fg-lightness: 0.9;
+        --link-fg-chromaticity: 0.08;
+    }
+
+    .main-link {
+        color: oklch(var(--link-fg-lightness) var(--link-fg-chromaticity) var(--hue));
+    }
+}
+.request-hue       { --hue: 232; }
+.event-hue         { --hue: 153; }
+.enum-hue          { --hue: 317; }
+.type-hue          { --hue: 90; }
+.type-modifier-hue { --hue: 57; }
+.interface-hue     { --hue: 94; }
+.frozen-hue        { --hue: 232; }
+.deprecated-hue    { --hue: 19; }
+a, a:hover, a:visited, a:active {
+    color: inherit;
+}
+a, a:visited {
+    text-decoration: none;
+}
+a:hover, a:active {
+    text-decoration: underline;
+}
+body {
+    margin: 0;
+    padding: 1em;
+    background-color: oklch(var(--bg-lightness) 0 0);
+    color: oklch(var(--main-lightness) 0 0);
+}
+main {
+    max-width: 60em;
+    margin: auto;
+}
+li {
+    margin-bottom: 0.5em;
+}
+.toc-summary {
+    color: oklch(var(--lowkey-lightness) 0 0);
+}
+.toc {
+    margin-left: 1em;
+    padding-left: 0;
+    list-style-type: none;
+}
+.generic-link {
+    text-decoration: underline;
+}
+.noselect {
+    user-select: none;
+}
+ul:empty {
+    display: none;
+}
+.suite-name {
+    font-size: 125%;
+    color: oklch(var(--lowkey-lightness) 0 0);
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+.protocol-toc {
+    margin-top: 1em;
+}
+.protocol-index {
+    margin-bottom: 0.5em;
+}

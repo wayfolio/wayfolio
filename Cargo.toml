@@ -1,0 +1,11 @@
+[workspace]
+members = ["core", "wasm-test"]
+exclude = ["wasm"]
+
+[package]
+name = "wayfolio"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+wayfolio-core = { path = "core", features = ["host"] }

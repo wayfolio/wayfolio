@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 32 32"
+   version="1.1"
+   id="svg3"
+   sodipodi:docname="favicon.svg"
+   inkscape:version="1.4.4 (dcaf3e7d9e, 2026-05-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview3"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="13.0625"
+     inkscape:cx="19.980861"
+     inkscape:cy="17.5311"
+     inkscape:window-width="1920"
+     inkscape:window-height="1044"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3" />
+  <defs
+     id="defs2">
+    <linearGradient
+       id="t"
+       x1="0"
+       y1="0"
+       x2="0"
+       y2="1">
+      <stop
+         offset="0"
+         stop-color="#303942"
+         id="stop1" />
+      <stop
+         offset="1"
+         stop-color="#20252a"
+         id="stop2" />
+    </linearGradient>
+  </defs>
+  <rect
+     width="32"
+     height="32"
+     rx="7"
+     fill="url(#t)"
+     id="rect2"
+     style="fill:#181818;fill-opacity:1" />
+  <path
+     d="M 7.7256885,10.5 H 24.274311 M 19.182428,5.725688 24.274311,10.5 19.182428,15.274312"
+     stroke="#00adf0"
+     id="path2"
+     style="fill:none;stroke-width:3.45138;stroke-linecap:round;stroke-linejoin:round" />
+  <path
+     d="M 24.274309,21.5 H 7.7256911 M 12.817574,16.725689 7.7256911,21.5 12.817574,26.274311"
+     stroke="#3ec173"
+     id="path3"
+     style="fill:none;stroke-width:3.45138;stroke-linecap:round;stroke-linejoin:round" />
+</svg>

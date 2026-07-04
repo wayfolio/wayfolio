@@ -1,0 +1,29 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: build
+        run: cargo build --no-default-features
+      - name: build all features
+        run: cargo build
+      - name: install wasm-pack
+        run: curl https://wasm-bindgen.github.io/wasm-pack/installer/init.sh -sSf | sh
+      - name: run wasm test
+        run: |
+          cd wasm-test
+          cargo run
+      - name: build wasm
+        run: |
+          cd wasm
+          wasm-pack build --target web --no-typescript --no-pack
+

@@ -1,0 +1,107 @@
+.message-signature {
+    padding: 1em;
+    color: oklch(var(--code-secondary-lightness) 0 0);
+    background-color: oklch(var(--code-bg-lightness) 0 0);
+    font-size: 1rem;
+    overflow-x: auto;
+    line-height: 1.5;
+}
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25em;
+    margin-top: 0.25em;
+}
+.badges:empty {
+    display: none;
+}
+.badge-normal, .badge-destructor {
+    display: inline-block;
+    padding: 0.25em;
+    border-radius: 0.4em;
+}
+.badge-normal {
+    color: oklch(var(--badge-fg-lightness) var(--highlight-chromaticity) var(--hue));
+    background-color: oklch(var(--badge-bg-lightness) var(--badge-bg-chromaticity) var(--hue));
+}
+.badge-destructor {
+    font-weight: bold;
+    color: oklch(var(--badge-fg-lightness) 0 0);
+    background-color: oklch(var(--badge-bg-lightness) 0 0);
+}
+.message-body {
+    padding-left: 1.5em;
+}
+.interface-name {
+    color: oklch(var(--highlight-lightness) var(--highlight-chromaticity) var(--hue));
+}
+.keyword {
+    color: oklch(var(--code-secondary-lightness) var(--code-secondary-chromaticity) var(--hue));
+}
+.summary {
+    font-size: 115%;
+}
+.member-name {
+    color: oklch(var(--highlight-lightness) var(--highlight-chromaticity) var(--hue));
+    font-weight: bold;
+}
+.arg-ty-nullable {
+    color: oklch(var(--code-secondary-lightness) var(--code-secondary-chromaticity) var(--hue));
+}
+.main-arg-name {
+    font-weight: bold;
+}
+.arg-name {
+    font-weight: bold;
+    color: oklch(var(--highlight-lightness) 0 0);
+}
+.arg-ty {
+    color: oklch(var(--code-secondary-lightness) var(--code-secondary-chromaticity) var(--hue));
+}
+.arg-em-dash {
+    color: oklch(var(--lowkey-lightness) 0 0);
+}
+.interface-protocol-link {
+    font-size: 60%;
+}
+.copyright {
+    margin: 1em 0;
+}
+.protocol-prefix {
+    color: oklch(var(--lowkey-lightness) 0 0);
+}
+.protocol-url {
+    font-weight: bold;
+}
+.compositor-support-title {
+    color: oklch(var(--lowkey-lightness) 0 0);
+    font-size: 115%;
+}
+.compositor-support {
+    margin: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1em;
+}
+.compositor-support-version {
+    padding: 0.5em;
+    padding-bottom: 0.7em;
+    background-color: oklch(var(--code-bg-lightness) 0 0);
+    border-radius: 0.3em;
+}
+.compositor-support-version-list {
+    font-family: monospace;
+    column-width: var(--colw);
+    column-count: var(--cols);
+    column-fill: balance;
+    column-gap: 0.75em;
+    margin: 0.5em 0 0 0.5em;
+}
+.compositor-support-version-list-element:not(:last-child) {
+    margin-bottom: 0.5em;
+}
+.compositor-version {
+    color: oklch(var(--lowkey-lightness) 0 0);
+    font-size: 85%;
+}

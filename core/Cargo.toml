@@ -1,0 +1,18 @@
+[package]
+name = "wayfolio-core"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+host = ["dep:serde", "dep:serde_json"]
+
+[dependencies]
+hypertext = "0.12.1"
+quick-xml = "0.41.0"
+thiserror = "2.0.18"
+markdown = "1.0.0"
+aho-corasick = "1.1.4"
+isnt = "0.2.0"
+linearize = { version = "0.1.7", features = ["derive"] }
+serde = { version = "1.0.228", features = ["derive"], optional = true }
+serde_json = { version = "1.0.150", optional = true }

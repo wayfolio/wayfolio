@@ -1,0 +1,16 @@
+.lowkey {
+    color: oklch(var(--lowkey-lightness) 0 0);
+}
+.index-intro {
+    margin-bottom: 2em;
+}
+.index-outro {
+    margin-top: 2em;
+}
+.index-toc li {
+    margin-bottom: 1em;
+}
+.index-desc {
+    display: block;
+    margin-top: 0.4em;
+}

@@ -1,0 +1,173 @@
+.render-intro {
+    color: oklch(var(--lowkey-lightness) 0 0);
+}
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25em;
+    border-bottom: 1px solid oklch(var(--lowkey-lightness) 0 0 / 0.3);
+    margin-bottom: 1.25em;
+}
+.tab {
+    appearance: none;
+    border: none;
+    background: none;
+    font: inherit;
+    padding: 0.6em 1em;
+    cursor: pointer;
+    border-radius: 0.4em 0.4em 0 0;
+    color: oklch(var(--lowkey-lightness) 0 0);
+}
+.tab:hover {
+    background-color: oklch(var(--code-bg-lightness) 0 0);
+}
+.panel {
+    display: none;
+}
+html:not([data-tab]) .panel[data-panel="paste"],
+html[data-tab="paste"] .panel[data-panel="paste"],
+html[data-tab="file"] .panel[data-panel="file"],
+html[data-tab="url"] .panel[data-panel="url"] {
+    display: block;
+}
+html[data-tab="paste"] .tab[data-panel="paste"],
+html[data-tab="file"] .tab[data-panel="file"],
+html[data-tab="url"] .tab[data-panel="url"] {
+    color: oklch(var(--main-lightness) 0 0);
+    font-weight: bold;
+    box-shadow: inset 0 -2px 0 oklch(var(--highlight-lightness) var(--highlight-chromaticity) 232);
+}
+.field-label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+.field-hint {
+    color: oklch(var(--lowkey-lightness) 0 0);
+    font-size: 90%;
+}
+.field-row {
+    display: flex;
+    gap: 0.5em;
+    margin-top: 0.75em;
+    flex-wrap: wrap;
+    align-items: center;
+}
+#paste-input {
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 16em;
+    font-family: monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0.75em;
+    border-radius: 0.4em;
+    border: 1px solid oklch(var(--lowkey-lightness) 0 0 / 0.4);
+    background-color: oklch(var(--code-bg-lightness) 0 0);
+    color: inherit;
+    resize: vertical;
+}
+#url-input {
+    flex: 1;
+    min-width: 15em;
+    font: inherit;
+    padding: 0.6em;
+    border-radius: 0.4em;
+    border: 1px solid oklch(var(--lowkey-lightness) 0 0 / 0.4);
+    background-color: oklch(var(--code-bg-lightness) 0 0);
+    color: inherit;
+}
+#file-input {
+    font: inherit;
+}
+.render-btn {
+    appearance: none;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.6em 1.2em;
+    border-radius: 0.4em;
+    border: none;
+    color: oklch(var(--badge-fg-lightness) var(--highlight-chromaticity) 232);
+    background-color: oklch(var(--badge-bg-lightness) var(--badge-bg-chromaticity) 232);
+}
+.render-btn:hover {
+    text-decoration: underline;
+}
+#drop-zone {
+    appearance: none;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    font: inherit;
+    cursor: pointer;
+    border: 2px dashed oklch(var(--lowkey-lightness) 0 0 / 0.5);
+    border-radius: 0.6em;
+    padding: 3em 1em;
+    text-align: center;
+    background: none;
+    color: oklch(var(--lowkey-lightness) 0 0);
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+#drop-zone:hover {
+    border-color: oklch(var(--lowkey-lightness) 0 0 / 0.9);
+    color: oklch(var(--main-lightness) 0 0);
+}
+#drop-zone.dragover {
+    border-color: oklch(var(--highlight-lightness) var(--highlight-chromaticity) 153);
+    background-color: oklch(var(--code-bg-lightness) var(--badge-bg-chromaticity) 153);
+    color: oklch(var(--main-lightness) 0 0);
+}
+.drop-zone-title {
+    font-size: 120%;
+    font-weight: bold;
+    margin-bottom: 0.4em;
+}
+.drop-zone-hint {
+    font-size: 90%;
+}
+#status {
+    margin: 1.25em 0;
+    min-height: 1.4em;
+}
+#status.error {
+    color: oklch(var(--highlight-lightness) var(--highlight-chromaticity) 19);
+    white-space: pre-wrap;
+}
+#status.ok {
+    color: oklch(var(--highlight-lightness) var(--highlight-chromaticity) 153);
+}
+#error-detail {
+    white-space: pre-wrap;
+}
+#status.info {
+    color: oklch(var(--lowkey-lightness) 0 0);
+}
+#output-wrap[hidden] {
+    display: none;
+}
+.output-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1em;
+    margin-bottom: 0.5em;
+}
+.output-title {
+    margin: 0;
+}
+.output-links {
+    display: flex;
+    gap: 1em;
+}
+.output-links a[hidden] {
+    display: none;
+}
+#output {
+    width: 100%;
+    height: 40em;
+    border: 1px solid oklch(var(--lowkey-lightness) 0 0 / 0.3);
+    border-radius: 0.4em;
+    background-color: oklch(var(--bg-lightness) 0 0);
+    resize: vertical;
+}
