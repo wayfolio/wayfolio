@@ -213,7 +213,11 @@ impl Protocols<'_> {
                 "\n"
                 span .keyword .enum-hue { "enum" }
                 " "
-                span .member-name .enum-hue { (m.name) }
+                span .member-name .enum-hue {
+                    a href=(self.member_link(p, i, m)) {
+                        (m.name)
+                    }
+                }
                 " "
                 span .enum-paren { "{\n" }
                 @for e in &e.entries {
