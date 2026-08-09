@@ -4,6 +4,12 @@
     border-top-style: solid;
     border-color: oklch(var(--code-secondary-lightness) 0 0);
 }
+.interface_header {
+    margin-top: 3em;
+    border-top-width: 0.3em;
+    border-top-style: solid;
+    border-color: oklch(var(--code-secondary-lightness) var(--border-chromaticity) var(--hue));
+}
 .message_signature {
     padding: 1em;
     color: oklch(var(--code-secondary-lightness) 0 0);

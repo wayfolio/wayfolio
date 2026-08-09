@@ -5,6 +5,7 @@
     font-family: sans-serif;
     --highlight-chromaticity: 0.12;
     --code-secondary-chromaticity: 0.09;
+    --border-chromaticity: 0.04;
     --badge-bg-chromaticity: 0.02;
 }
 @media (prefers-color-scheme: light) {

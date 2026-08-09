@@ -54,6 +54,7 @@ class! {
     index_outro,
     index_toc,
     info,
+    interface_header,
     interface_hue,
     interface_name,
     interface_protocol_link,
