@@ -62,6 +62,7 @@ class! {
     lowkey,
     main_arg_name,
     main_link,
+    member,
     member_name,
     message_body,
     message_interface_link,

@@ -15,7 +15,7 @@ use {
 impl Protocols<'_> {
     pub(crate) fn member(&self, p: &Protocol, i: &Interface, m: &Member) -> impl Renderable {
         maud! {
-            div .(m.ty.hue()) {
+            div .(C::member) .(m.ty.hue()) {
                 @match &m.ty {
                     MemberType::Message(v) => (self.message(p, i, m, v)),
                     MemberType::Enum(v) => (self.enum_(p, i, m, v)),
