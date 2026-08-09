@@ -5,7 +5,7 @@ use {
             classes::C,
             templates::{index_link, protocol_toc::protocol_toc, wrapper::wrapper},
         },
-        tree::{Description, Protocol, Suite},
+        tree::{Description, MemberType, Protocol, Suite},
     },
     hypertext::{Raw, prelude::*},
     isnt::std_1::primitive::IsntSliceExt,
@@ -116,6 +116,16 @@ pub(crate) fn toc_description(v: &Option<Description>) -> impl Renderable {
     maud! {
         @if let Some(v) = v && let Some(v) = v.summary {
             span .(C::toc_summary) { " — " (v) }
+        }
+    }
+}
+
+impl MemberType<'_> {
+    fn hue(&self) -> &'static str {
+        match self {
+            MemberType::Message(v) if v.is_request => C::request_hue,
+            MemberType::Message(_) => C::event_hue,
+            MemberType::Enum(_) => C::enum_hue,
         }
     }
 }

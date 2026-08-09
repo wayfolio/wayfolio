@@ -5,7 +5,7 @@ use {
             classes::C,
             templates::protocols::{Protocols, toc_description},
         },
-        tree::{Interface, MemberType, Protocol},
+        tree::{Interface, Protocol},
     },
     hypertext::prelude::*,
     isnt::std_1::primitive::IsntSliceExt,
@@ -40,13 +40,7 @@ impl Protocols<'_> {
                 ul .(C::toc) {
                     @for m in &i.members {
                         li {
-                            span .(C::main_link) .(
-                                match &m.ty {
-                                    MemberType::Message(v) if v.is_request => C::request_hue,
-                                    MemberType::Message(_) => C::event_hue,
-                                    MemberType::Enum(_) => C::enum_hue,
-                                }
-                            ) {
+                            span .(C::main_link) .(m.ty.hue()) {
                                 a href=(self.member_link(p, i, m)) { (m.name) }
                             }
                             (toc_description(&m.description))
