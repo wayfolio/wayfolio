@@ -75,6 +75,7 @@ class! {
     panel,
     paste_input,
     paste_render,
+    protocol_header,
     protocol_index,
     protocol_prefix,
     protocol_toc,
