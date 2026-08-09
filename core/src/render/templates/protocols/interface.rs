@@ -1,7 +1,10 @@
 use {
     crate::{
         compendium::Compositor,
-        render::templates::protocols::{Protocols, toc_description},
+        render::{
+            classes::C,
+            templates::protocols::{Protocols, toc_description},
+        },
         tree::{Interface, MemberType, Protocol},
     },
     hypertext::prelude::*,
@@ -20,28 +23,28 @@ impl Protocols<'_> {
         sp.sort_by_key(|s| s.0.wrapping_neg());
         maud! {
             h2 id=(self.interface_anchor(p, i)) {
-                a .interface_protocol_link href=(self.protocol_link(p)) { (p.name) }
+                a .(C::interface_protocol_link) href=(self.protocol_link(p)) { (p.name) }
                 br;
-                span .interface_name .interface_hue {
+                span .(C::interface_name) .(C::interface_hue) {
                     a href=(self.interface_link(p, i)) { (i.name) }
                 }
             }
-            div .badges {
+            div .(C::badges) {
                 @if i.frozen == Some(true) {
-                    span .badge_normal .frozen_hue { "This interface is frozen" }
+                    span .(C::badge_normal) .(C::frozen_hue) { "This interface is frozen" }
                 } @else {
-                    span .badge_normal .interface_hue { "Version " (i.version) }
+                    span .(C::badge_normal) .(C::interface_hue) { "Version " (i.version) }
                 }
             }
             @if i.members.is_not_empty() {
-                ul .toc {
+                ul .(C::toc) {
                     @for m in &i.members {
                         li {
-                            span .main_link .(
+                            span .(C::main_link) .(
                                 match &m.ty {
-                                    MemberType::Message(v) if v.is_request => "request_hue",
-                                    MemberType::Message(_) => "event_hue",
-                                    MemberType::Enum(_) => "enum_hue",
+                                    MemberType::Message(v) if v.is_request => C::request_hue,
+                                    MemberType::Message(_) => C::event_hue,
+                                    MemberType::Enum(_) => C::enum_hue,
                                 }
                             ) {
                                 a href=(self.member_link(p, i, m)) { (m.name) }
@@ -66,8 +69,8 @@ impl Protocols<'_> {
 
 fn compositor_support_boxes(sp: &[(u32, Vec<&Compositor>)]) -> impl Renderable {
     maud! {
-        div .compositor_support_title { "Compositor Support" }
-        div .compositor_support {
+        div .(C::compositor_support_title) { "Compositor Support" }
+        div .(C::compositor_support) {
             @for c in sp {
                 (compositor_support_box(c.0, &c.1))
             }
@@ -86,14 +89,14 @@ fn compositor_support_box(version: u32, compositors: &[&Compositor]) -> impl Ren
         "--cols:"(cols)";--colw:"(colw)"ch"
     };
     maud! {
-        div .compositor_support_version {
-            span .badge_normal .interface_hue { "Version " (version) }
-            div .compositor_support_version_list style=(style) {
+        div .(C::compositor_support_version) {
+            span .(C::badge_normal) .(C::interface_hue) { "Version " (version) }
+            div .(C::compositor_support_version_list) style=(style) {
                 @for c in compositors {
-                    div .compositor_support_version_list_element {
+                    div .(C::compositor_support_version_list_element) {
                         (c.info.name)
                         " "
-                        span .compositor_version { (c.info.version) }
+                        span .(C::compositor_version) { (c.info.version) }
                     }
                 }
             }

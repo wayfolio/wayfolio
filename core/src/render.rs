@@ -8,6 +8,7 @@ use {
     hypertext::Renderable,
 };
 
+mod classes;
 #[cfg(feature = "host")]
 pub(crate) mod host;
 mod templates;

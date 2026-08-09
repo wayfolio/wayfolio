@@ -1,7 +1,7 @@
 use {
     crate::{
         compendium::MemberKind,
-        render::templates::protocols::Protocols,
+        render::{classes::C, templates::protocols::Protocols},
         tree::{Interface, InternalLink, Member, MemberType, Protocol},
     },
     hypertext::{context::AttributeValue, prelude::*},
@@ -10,12 +10,12 @@ use {
 
 impl Protocols<'_> {
     pub(crate) fn internal_link_hue(&self, p: &InternalLink) -> impl Renderable<AttributeValue> {
-        let mut hue = "interface_hue";
+        let mut hue = C::interface_hue;
         if let Some((_, ty)) = p.member {
             hue = match ty {
-                MemberKind::Request => "request_hue",
-                MemberKind::Event => "event_hue",
-                MemberKind::Enum => "enum_hue",
+                MemberKind::Request => C::request_hue,
+                MemberKind::Event => C::event_hue,
+                MemberKind::Enum => C::enum_hue,
             };
         }
         hue

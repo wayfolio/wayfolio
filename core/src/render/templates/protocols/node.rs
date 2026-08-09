@@ -1,5 +1,8 @@
 use {
-    crate::{render::templates::protocols::Protocols, tree::Node},
+    crate::{
+        render::{classes::C, templates::protocols::Protocols},
+        tree::Node,
+    },
     hypertext::prelude::*,
 };
 
@@ -39,10 +42,10 @@ impl Protocols<'_> {
                     em { (self.nodes(&v.children)) }
                 }
                 Node::Link(v) => {
-                    a .generic_link href=(v.url) title=(v.title) { (self.nodes(&v.children)) }
+                    a .(C::generic_link) href=(v.url) title=(v.title) { (self.nodes(&v.children)) }
                 }
                 Node::InternalLink(v) => {
-                    span .main_link .(self.internal_link_hue(v)) {
+                    span .(C::main_link) .(self.internal_link_hue(v)) {
                         a href=(self.internal_link(v)) { (v.text) }
                     }
                 }

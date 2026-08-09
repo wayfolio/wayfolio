@@ -1,4 +1,7 @@
-use {crate::render::templates::wrapper::wrapper, hypertext::prelude::*};
+use {
+    crate::render::{classes::C, templates::wrapper::wrapper},
+    hypertext::prelude::*,
+};
 
 pub(crate) fn render_url() -> impl Renderable {
     wrapper(
@@ -12,23 +15,23 @@ pub(crate) fn render_url() -> impl Renderable {
             script type="module" src="assets/render_url.js" {}
         },
         maud! {
-            div #status .info role="status" aria-live="polite" {
+            div #(C::status) .(C::info) role="status" aria-live="polite" {
                 "Fetching and rendering the protocol…"
             }
-            section #error hidden {
+            section #(C::error) hidden {
                 h1 { "Could not render the protocol" }
-                p #error_detail {}
+                p #(C::error_detail) {}
                 p {
                     "You can go back and try again:"
                 }
                 ul {
                     li {
-                        a #retry_link .generic_link href="render.html" {
+                        a #(C::retry_link) .(C::generic_link) href="render.html" {
                             "Try this URL again on the render page"
                         }
                     }
                     li {
-                        a .generic_link href="render.html" {
+                        a .(C::generic_link) href="render.html" {
                             "Go to the render page"
                         }
                     }
