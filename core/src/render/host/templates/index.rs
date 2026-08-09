@@ -1,4 +1,7 @@
-use {crate::render::templates::wrapper::wrapper, hypertext::prelude::*};
+use {
+    crate::render::{classes::C, templates::wrapper::wrapper},
+    hypertext::prelude::*,
+};
 
 pub(crate) fn index() -> impl Renderable {
     wrapper(
@@ -10,32 +13,32 @@ pub(crate) fn index() -> impl Renderable {
         },
         maud! {
             h1 { "Wayfolio" }
-            p .index-intro .lowkey {
+            p .(C::index_intro) .(C::lowkey) {
                 "HTML documentation for Wayland protocols."
             }
-            ul .toc .index-toc {
+            ul .(C::toc) .(C::index_toc) {
                 li {
-                    a .generic-link href="protocols.html" { "Protocol list" }
-                    span .index-desc .lowkey {
+                    a .(C::generic_link) href="protocols.html" { "Protocol list" }
+                    span .(C::index_desc) .(C::lowkey) {
                         "Browse the protocols individually."
                     }
                 }
                 li {
-                    a .generic-link href="single.html" { "Single page HTML" }
-                    span .index-desc .lowkey {
+                    a .(C::generic_link) href="single.html" { "Single page HTML" }
+                    span .(C::index_desc) .(C::lowkey) {
                         "One very big document."
                     }
                 }
                 li {
-                    a .generic-link href="render.html" { "Render your own" }
-                    span .index-desc .lowkey {
+                    a .(C::generic_link) href="render.html" { "Render your own" }
+                    span .(C::index_desc) .(C::lowkey) {
                         "Paste, upload, or link an XML protocol and render it."
                     }
                 }
             }
-            p .index-outro .lowkey {
+            p .(C::index_outro) .(C::lowkey) {
                 "Report issues on "
-                a .generic-link href="https://github.com/wayfolio/wayfolio" { "GitHub" }
+                a .(C::generic_link) href="https://github.com/wayfolio/wayfolio" { "GitHub" }
                 "."
             }
         },

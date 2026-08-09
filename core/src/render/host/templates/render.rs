@@ -1,5 +1,8 @@
 use {
-    crate::render::templates::{index_link, wrapper::wrapper},
+    crate::render::{
+        classes::C,
+        templates::{index_link, wrapper::wrapper},
+    },
     hypertext::{Raw, prelude::*},
 };
 
@@ -28,60 +31,60 @@ pub(crate) fn render() -> impl Renderable {
                 (index_link(false))
             }
             h1 { "Render a Wayland protocol" }
-            p .render-intro {
+            p .(C::render_intro) {
                 "Provide a protocol XML file and it will be rendered as HTML right "
                 "here in your browser."
             }
-            div .tabs {
-                button .tab type="button" data-panel="paste" {
+            div .(C::tabs) {
+                button .(C::tab) type="button" data-panel="paste" {
                     "Paste XML"
                 }
-                button .tab type="button" data-panel="file" {
+                button .(C::tab) type="button" data-panel="file" {
                     "Upload a file"
                 }
-                button .tab type="button" data-panel="url" {
+                button .(C::tab) type="button" data-panel="url" {
                     "From a URL"
                 }
             }
-            section .panel data-panel="paste" {
-                label .field-label for="paste-input" { "Paste the contents of your .xml file:" }
-                textarea #paste-input rows="16" spellcheck="false" placeholder=(PLACEHOLDER) { }
-                div .field-row {
-                    button #paste-render .render-btn type="button" { "Render" }
+            section .(C::panel) data-panel="paste" {
+                label .(C::field_label) for=(C::paste_input) { "Paste the contents of your .xml file:" }
+                textarea #(C::paste_input) rows="16" spellcheck="false" placeholder=(PLACEHOLDER) { }
+                div .(C::field_row) {
+                    button #(C::paste_render) .(C::render_btn) type="button" { "Render" }
                 }
             }
-            section .panel data-panel="file" {
-                button #drop-zone type="button" {
-                    div .drop-zone-title { "Drop an .xml file or a URL here" }
-                    div .drop-zone-hint { "or click to choose a file from your computer." }
+            section .(C::panel) data-panel="file" {
+                button #(C::drop_zone) type="button" {
+                    div .(C::drop_zone_title) { "Drop an .xml file or a URL here" }
+                    div .(C::drop_zone_hint) { "or click to choose a file from your computer." }
                 }
-                input #file-input type="file" accept=".xml,text/xml,application/xml" hidden;
+                input #(C::file_input) type="file" accept=".xml,text/xml,application/xml" hidden;
             }
-            section .panel data-panel="url" {
-                label .field-label for="url-input" { "Enter the URL of an .xml file:" }
-                div .field-row {
-                    input #url-input type="url" inputmode="url" placeholder="https://example.com/my-protocol.xml";
-                    button #url-render .render-btn type="button" { "Fetch & render" }
+            section .(C::panel) data-panel="url" {
+                label .(C::field_label) for=(C::url_input) { "Enter the URL of an .xml file:" }
+                div .(C::field_row) {
+                    input #(C::url_input) type="url" inputmode="url" placeholder="https://example.com/my-protocol.xml";
+                    button #(C::url_render) .(C::render_btn) type="button" { "Fetch & render" }
                 }
-                p .field-hint {
+                p .(C::field_hint) {
                     "The file is fetched from your browser, so the server must allow "
                     "cross-origin requests."
                 }
             }
-            div #status {}
-            section #output-wrap hidden {
-                div .output-bar {
-                    h2 .output-title { "Result" }
-                    span .output-links {
-                        a #share-link .generic-link hidden {
+            div #(C::status) {}
+            section #(C::output_wrap) hidden {
+                div .(C::output_bar) {
+                    h2 .(C::output_title) { "Result" }
+                    span .(C::output_links) {
+                        a #(C::share_link) .(C::generic_link) hidden {
                             "Shareable link"
                         }
-                        a #open-link .generic-link target="_blank" rel="noopener" {
+                        a #(C::open_link) .(C::generic_link) target="_blank" rel="noopener" {
                             "Open in a new tab"
                         }
                     }
                 }
-                iframe #output title="Rendered protocol" {}
+                iframe #(C::output) title="Rendered protocol" {}
             }
         },
     )

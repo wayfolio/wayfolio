@@ -53,10 +53,10 @@
         let observer = new MutationObserver(function(records) {
             for (let record of records) {
                 for (let node of record.addedNodes) {
-                    if (saved_paste && node.id === 'paste-input') {
+                    if (saved_paste && node.id === 'paste_input') {
                         node.value = saved_paste;
                     }
-                    if (saved_url && node.id === 'url-input') {
+                    if (saved_url && node.id === 'url_input') {
                         node.value = saved_url;
                     }
                 }

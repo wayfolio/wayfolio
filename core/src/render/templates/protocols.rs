@@ -1,7 +1,10 @@
 use {
     crate::{
         compendium::Compendium,
-        render::templates::{index_link, protocol_toc::protocol_toc, wrapper::wrapper},
+        render::{
+            classes::C,
+            templates::{index_link, protocol_toc::protocol_toc, wrapper::wrapper},
+        },
         tree::{Description, Protocol, Suite},
     },
     hypertext::{Raw, prelude::*},
@@ -78,7 +81,7 @@ impl<'a> Protocols<'a> {
                     (index_link(self.nested))
                     @if self.nested {
                         " / "
-                        a .generic-link href="../protocols.html" { "Go to protocols" }
+                        a .(C::generic_link) href="../protocols.html" { "Go to protocols" }
                     }
                 }
                 @if include_top {
@@ -112,7 +115,7 @@ pub(crate) fn protocols(
 pub(crate) fn toc_description(v: &Option<Description>) -> impl Renderable {
     maud! {
         @if let Some(v) = v && let Some(v) = v.summary {
-            span .toc-summary { " — " (v) }
+            span .(C::toc_summary) { " — " (v) }
         }
     }
 }

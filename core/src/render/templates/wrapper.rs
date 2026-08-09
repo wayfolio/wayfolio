@@ -1,4 +1,4 @@
-use hypertext::prelude::*;
+use {crate::render::classes::C, hypertext::prelude::*};
 
 pub(crate) fn wrapper(
     nested: bool,
@@ -22,7 +22,7 @@ pub(crate) fn wrapper(
                 }
                 (head)
             }
-            body #top {
+            body #(C::top) {
                 main {
                     (body)
                 }

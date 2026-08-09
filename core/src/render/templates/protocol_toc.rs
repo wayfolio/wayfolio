@@ -1,6 +1,6 @@
 use {
     crate::{
-        render::templates::protocols::toc_description,
+        render::{classes::C, templates::protocols::toc_description},
         tree::{Protocol, Suite},
     },
     hypertext::prelude::*,
@@ -8,10 +8,10 @@ use {
 
 pub(crate) fn protocol_toc(inline: bool, suites: &[Suite], ps: &[Protocol]) -> impl Renderable {
     maud! {
-        div .protocol-toc {
+        div .(C::protocol_toc) {
             @for suite in suites {
-                div .toc {
-                    div .suite-name { (suite.name) }
+                div .(C::toc) {
+                    div .(C::suite_name) { (suite.name) }
                     (protocol_toc_(inline, &suite.protocols))
                 }
             }
@@ -22,9 +22,9 @@ pub(crate) fn protocol_toc(inline: bool, suites: &[Suite], ps: &[Protocol]) -> i
 
 fn protocol_toc_(inline: bool, protocols: &[Protocol<'_>]) -> impl Renderable {
     maud! {
-        div .toc {
+        div .(C::toc) {
             @for protocol in protocols {
-                div .protocol-index {
+                div .(C::protocol_index) {
                     a href={
                         @if inline {
                             "#p-"(protocol.name)

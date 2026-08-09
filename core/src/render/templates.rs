@@ -1,4 +1,4 @@
-use hypertext::prelude::*;
+use {crate::render::classes::C, hypertext::prelude::*};
 
 pub(crate) mod protocol_toc;
 pub(crate) mod protocols;
@@ -10,6 +10,6 @@ pub(crate) fn index_link(nested: bool) -> impl Renderable {
         false => "index.html",
     };
     maud! {
-        a .generic-link href={url} { "Go to index" }
+        a .(C::generic_link) href={url} { "Go to index" }
     }
 }

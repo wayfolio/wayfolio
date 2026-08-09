@@ -2,7 +2,7 @@ use {
     crate::{
         ast::{ArgType, MessageType},
         compendium::MemberKind,
-        render::templates::protocols::Protocols,
+        render::{classes::C, templates::protocols::Protocols},
         tree::{
             Arg, ArgEnum, ArgInterface, Description, Enum, Interface, Member, MemberType, Message,
             Protocol,
@@ -25,10 +25,10 @@ impl Protocols<'_> {
     fn message(&self, p: &Protocol, i: &Interface, m: &Member, v: &Message) -> impl Renderable {
         maud! {
             (self.message_signature(p, i, m, v))
-            div .message-body {
-                div .badges {
+            div .(C::message_body) {
+                div .(C::badges) {
                     @if v.ty == Some(MessageType::Destructor) {
-                        span .badge-destructor { "Destructor" }
+                        span .(C::badge_destructor) { "Destructor" }
                     }
                     (self.since_badge(m.since))
                     (self.deprecated_since_badge(m.deprecated_since))
@@ -53,28 +53,28 @@ impl Protocols<'_> {
         v: &Message,
     ) -> impl Renderable {
         let hue = match v.is_request {
-            true => "request-hue",
-            false => "event-hue",
+            true => C::request_hue,
+            false => C::event_hue,
         };
         let keyword = match v.is_request {
             true => "request",
             false => "event",
         };
         let paren = match v.is_request {
-            true => "request-paren",
-            false => "event-paren",
+            true => C::request_paren,
+            false => C::event_paren,
         };
         maud! {
-            pre .message-signature id=(self.member_anchor(p, i, m)) {
-                span .message-interface-link {
+            pre .(C::message_signature) id=(self.member_anchor(p, i, m)) {
+                span .(C::message_interface_link) {
                     a href=(self.interface_link(p, i)) {
                         (i.name)
                     }
                 }
                 "\n"
-                span .keyword .(hue) { (keyword) }
+                span .(C::keyword) .(hue) { (keyword) }
                 " "
-                span .member-name .(hue) {
+                span .(C::member_name) .(hue) {
                     a href=(self.member_link(p, i, m)) {
                         (m.name)
                     }
@@ -85,11 +85,11 @@ impl Protocols<'_> {
                 }
                 @for a in &v.args {
                     "    "
-                    span .arg-name { (a.name) }
-                    span .arg-colon { ":" }
+                    span .(C::arg_name) { (a.name) }
+                    span .(C::arg_colon) { ":" }
                     " "
                     (self.arg_type(i, a))
-                    span .arg-comma { "," }
+                    span .(C::arg_comma) { "," }
                     "\n"
                 }
                 span .(paren) { ")" }
@@ -116,7 +116,7 @@ impl Protocols<'_> {
         let link = protocol.map(|p| self.internal_link2(p, interface, member));
         maud! {
             @if let Some(link) = &link {
-                span .arg-link {
+                span .(C::arg_link) {
                     a href=(link) {
                         (r)
                     }
@@ -158,12 +158,12 @@ impl Protocols<'_> {
         }
         maud! {
             @if a.allow_null {
-                span .arg-ty-nullable .type-modifier-hue {
+                span .(C::arg_ty_nullable) .(C::type_modifier_hue) {
                     "nullable"
                 }
                 " "
             }
-            span .arg-ty .type-hue { (name) }
+            span .(C::arg_ty) .(C::type_hue) { (name) }
             @if li.is_some() || le.is_some() {
                 "<"
                 (self.wrap_in_link(a, maud! {
@@ -185,10 +185,10 @@ impl Protocols<'_> {
     fn enum_(&self, p: &Protocol, i: &Interface, m: &Member, e: &Enum) -> impl Renderable {
         maud! {
             (self.enum_signature(p, i, m, e))
-            div .message-body {
-                div .badges {
+            div .(C::message_body) {
+                div .(C::badges) {
                     @if e.bitfield {
-                        span .badge-normal .enum-hue { "This is a bitfield" }
+                        span .(C::badge_normal) .(C::enum_hue) { "This is a bitfield" }
                     }
                     (self.since_badge(m.since))
                 }
@@ -206,31 +206,31 @@ impl Protocols<'_> {
 
     fn enum_signature(&self, p: &Protocol, i: &Interface, m: &Member, e: &Enum) -> impl Renderable {
         maud! {
-            pre .message-signature id=(self.member_anchor(p, i, m)) {
-                span .message-interface-link {
+            pre .(C::message_signature) id=(self.member_anchor(p, i, m)) {
+                span .(C::message_interface_link) {
                     a href=(self.interface_link(p, i)) { (i.name) }
                 }
                 "\n"
-                span .keyword .enum-hue { "enum" }
+                span .(C::keyword) .(C::enum_hue) { "enum" }
                 " "
-                span .member-name .enum-hue {
+                span .(C::member_name) .(C::enum_hue) {
                     a href=(self.member_link(p, i, m)) {
                         (m.name)
                     }
                 }
                 " "
-                span .enum-paren { "{\n" }
+                span .(C::enum_paren) { "{\n" }
                 @for e in &e.entries {
                     "    "
-                    span .arg-name { (e.name) }
+                    span .(C::arg_name) { (e.name) }
                     " "
-                    span .arg-equals { "=" }
+                    span .(C::arg_equals) { "=" }
                     " "
                     (e.value)
-                    span .arg-comma { "," }
+                    span .(C::arg_comma) { "," }
                     "\n"
                 }
-                span .enum-paren { "}" }
+                span .(C::enum_paren) { "}" }
             }
         }
     }
@@ -248,14 +248,14 @@ impl Protocols<'_> {
         maud! {
             @if any {
                 li {
-                    span .main-arg-name { (name) }
+                    span .(C::main_arg_name) { (name) }
                     @if let Some(v) = summary {
                         " "
-                        span .arg-em-dash { "—" }
+                        span .(C::arg_em_dash) { "—" }
                         " "
                         (v)
                     }
-                    div .badges {
+                    div .(C::badges) {
                         (self.since_badge(since))
                         (self.deprecated_since_badge(deprecated_since))
                     }
@@ -270,7 +270,7 @@ impl Protocols<'_> {
     fn since_badge(&self, since: Option<u32>) -> impl Renderable {
         maud! {
             @if let Some(v) = since {
-                span .badge-normal .interface-hue { "Available since version " (v) }
+                span .(C::badge_normal) .(C::interface_hue) { "Available since version " (v) }
             }
         }
     }
@@ -278,7 +278,7 @@ impl Protocols<'_> {
     fn deprecated_since_badge(&self, since: Option<u32>) -> impl Renderable {
         maud! {
             @if let Some(v) = since {
-                span .badge-normal .deprecated-hue { "Deprecated since version " (v) }
+                span .(C::badge_normal) .(C::deprecated_hue) { "Deprecated since version " (v) }
             }
         }
     }
