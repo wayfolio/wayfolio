@@ -28,7 +28,7 @@ pub(crate) fn render() -> impl Renderable {
                 (index_link(false))
             }
             h1 { "Render a Wayland protocol" }
-            p .render-intro {
+            p .render_intro {
                 "Provide a protocol XML file and it will be rendered as HTML right "
                 "here in your browser."
             }
@@ -44,39 +44,39 @@ pub(crate) fn render() -> impl Renderable {
                 }
             }
             section .panel data-panel="paste" {
-                label .field-label for="paste-input" { "Paste the contents of your .xml file:" }
-                textarea #paste-input rows="16" spellcheck="false" placeholder=(PLACEHOLDER) { }
-                div .field-row {
-                    button #paste-render .render-btn type="button" { "Render" }
+                label .field_label for="paste_input" { "Paste the contents of your .xml file:" }
+                textarea #paste_input rows="16" spellcheck="false" placeholder=(PLACEHOLDER) { }
+                div .field_row {
+                    button #paste_render .render_btn type="button" { "Render" }
                 }
             }
             section .panel data-panel="file" {
-                button #drop-zone type="button" {
-                    div .drop-zone-title { "Drop an .xml file or a URL here" }
-                    div .drop-zone-hint { "or click to choose a file from your computer." }
+                button #drop_zone type="button" {
+                    div .drop_zone_title { "Drop an .xml file or a URL here" }
+                    div .drop_zone_hint { "or click to choose a file from your computer." }
                 }
-                input #file-input type="file" accept=".xml,text/xml,application/xml" hidden;
+                input #file_input type="file" accept=".xml,text/xml,application/xml" hidden;
             }
             section .panel data-panel="url" {
-                label .field-label for="url-input" { "Enter the URL of an .xml file:" }
-                div .field-row {
-                    input #url-input type="url" inputmode="url" placeholder="https://example.com/my-protocol.xml";
-                    button #url-render .render-btn type="button" { "Fetch & render" }
+                label .field_label for="url_input" { "Enter the URL of an .xml file:" }
+                div .field_row {
+                    input #url_input type="url" inputmode="url" placeholder="https://example.com/my-protocol.xml";
+                    button #url_render .render_btn type="button" { "Fetch & render" }
                 }
-                p .field-hint {
+                p .field_hint {
                     "The file is fetched from your browser, so the server must allow "
                     "cross-origin requests."
                 }
             }
             div #status {}
-            section #output-wrap hidden {
-                div .output-bar {
-                    h2 .output-title { "Result" }
-                    span .output-links {
-                        a #share-link .generic-link hidden {
+            section #output_wrap hidden {
+                div .output_bar {
+                    h2 .output_title { "Result" }
+                    span .output_links {
+                        a #share_link .generic_link hidden {
                             "Shareable link"
                         }
-                        a #open-link .generic-link target="_blank" rel="noopener" {
+                        a #open_link .generic_link target="_blank" rel="noopener" {
                             "Open in a new tab"
                         }
                     }

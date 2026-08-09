@@ -2,8 +2,8 @@ import {fetch_xml, generate_html} from './render_common.js';
 
 const el_status = document.getElementById('status');
 const el_error = document.getElementById('error');
-const el_error_detail = document.getElementById('error-detail');
-const el_retry_link = document.getElementById('retry-link');
+const el_error_detail = document.getElementById('error_detail');
+const el_retry_link = document.getElementById('retry_link');
 
 function fail(message) {
     el_status.hidden = true;

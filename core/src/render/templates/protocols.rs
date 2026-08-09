@@ -78,7 +78,7 @@ impl<'a> Protocols<'a> {
                     (index_link(self.nested))
                     @if self.nested {
                         " / "
-                        a .generic-link href="../protocols.html" { "Go to protocols" }
+                        a .generic_link href="../protocols.html" { "Go to protocols" }
                     }
                 }
                 @if include_top {
@@ -112,7 +112,7 @@ pub(crate) fn protocols(
 pub(crate) fn toc_description(v: &Option<Description>) -> impl Renderable {
     maud! {
         @if let Some(v) = v && let Some(v) = v.summary {
-            span .toc-summary { " — " (v) }
+            span .toc_summary { " — " (v) }
         }
     }
 }

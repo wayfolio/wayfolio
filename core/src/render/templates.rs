@@ -10,6 +10,6 @@ pub(crate) fn index_link(nested: bool) -> impl Renderable {
         false => "index.html",
     };
     maud! {
-        a .generic-link href={url} { "Go to index" }
+        a .generic_link href={url} { "Go to index" }
     }
 }

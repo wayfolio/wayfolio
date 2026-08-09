@@ -39,10 +39,10 @@ impl Protocols<'_> {
                     em { (self.nodes(&v.children)) }
                 }
                 Node::Link(v) => {
-                    a .generic-link href=(v.url) title=(v.title) { (self.nodes(&v.children)) }
+                    a .generic_link href=(v.url) title=(v.title) { (self.nodes(&v.children)) }
                 }
                 Node::InternalLink(v) => {
-                    span .main-link .(self.internal_link_hue(v)) {
+                    span .main_link .(self.internal_link_hue(v)) {
                         a href=(self.internal_link(v)) { (v.text) }
                     }
                 }

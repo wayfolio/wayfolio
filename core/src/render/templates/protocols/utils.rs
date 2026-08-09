@@ -10,12 +10,12 @@ use {
 
 impl Protocols<'_> {
     pub(crate) fn internal_link_hue(&self, p: &InternalLink) -> impl Renderable<AttributeValue> {
-        let mut hue = "interface-hue";
+        let mut hue = "interface_hue";
         if let Some((_, ty)) = p.member {
             hue = match ty {
-                MemberKind::Request => "request-hue",
-                MemberKind::Event => "event-hue",
-                MemberKind::Enum => "enum-hue",
+                MemberKind::Request => "request_hue",
+                MemberKind::Event => "event_hue",
+                MemberKind::Enum => "enum_hue",
             };
         }
         hue

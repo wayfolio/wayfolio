@@ -17,18 +17,18 @@ pub(crate) fn render_url() -> impl Renderable {
             }
             section #error hidden {
                 h1 { "Could not render the protocol" }
-                p #error-detail {}
+                p #error_detail {}
                 p {
                     "You can go back and try again:"
                 }
                 ul {
                     li {
-                        a #retry-link .generic-link href="render.html" {
+                        a #retry_link .generic_link href="render.html" {
                             "Try this URL again on the render page"
                         }
                     }
                     li {
-                        a .generic-link href="render.html" {
+                        a .generic_link href="render.html" {
                             "Go to the render page"
                         }
                     }

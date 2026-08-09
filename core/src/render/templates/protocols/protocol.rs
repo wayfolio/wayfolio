@@ -13,19 +13,19 @@ impl Protocols<'_> {
         maud! {
             h1 id=(anchor) {
                 @if include_top {
-                    a .interface-protocol-link href="#top" { "Go to top" }
+                    a .interface_protocol_link href="#top" { "Go to top" }
                     br;
                 }
                 a href={"#"(anchor)} { (p.name) }
                 @if let Some(url) = p.url {
                     " "
-                    span .protocol-prefix .protocol-url {
+                    span .protocol_prefix .protocol_url {
                         a href=(url) { "↗" }
                     }
                 }
             }
             @if let Some(c) = &p.copyright {
-                details .protocol-prefix .copyright {
+                details .protocol_prefix .copyright {
                     summary .noselect { "Copyright" }
                     pre { (c.body) }
                 }
@@ -34,7 +34,7 @@ impl Protocols<'_> {
                 ul .toc {
                     @for i in &p.interfaces {
                         li {
-                            span .main-link .interface-hue {
+                            span .main_link .interface_hue {
                                 a href={"#"(self.interface_anchor(p, i))} { (i.name) }
                             }
                             (toc_description(&i.description))

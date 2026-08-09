@@ -1,16 +1,16 @@
 import {fetch_xml, generate_html} from './render_common.js';
 
 const el_status = document.getElementById('status');
-const el_output_wrap = document.getElementById('output-wrap');
+const el_output_wrap = document.getElementById('output_wrap');
 const el_output = document.getElementById('output');
-const el_open_link = document.getElementById('open-link');
-const el_share_link = document.getElementById('share-link');
-const el_paste_input = document.getElementById('paste-input');
-const el_paste_render = document.getElementById('paste-render');
-const el_url_input = document.getElementById('url-input');
-const el_url_render = document.getElementById('url-render');
-const el_file_input = document.getElementById('file-input');
-const el_drop_zone = document.getElementById('drop-zone');
+const el_open_link = document.getElementById('open_link');
+const el_share_link = document.getElementById('share_link');
+const el_paste_input = document.getElementById('paste_input');
+const el_paste_render = document.getElementById('paste_render');
+const el_url_input = document.getElementById('url_input');
+const el_url_render = document.getElementById('url_render');
+const el_file_input = document.getElementById('file_input');
+const el_drop_zone = document.getElementById('drop_zone');
 const el_tabs = document.querySelectorAll('.tab');
 
 function save(key, value) {
