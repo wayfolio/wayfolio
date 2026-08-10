@@ -15,9 +15,11 @@ use {
 impl Protocols<'_> {
     pub(crate) fn member(&self, p: &Protocol, i: &Interface, m: &Member) -> impl Renderable {
         maud! {
-            @match &m.ty {
-                MemberType::Message(v) => (self.message(p, i, m, v)),
-                MemberType::Enum(v) => (self.enum_(p, i, m, v)),
+            div .(C::member) .(m.ty.hue()) {
+                @match &m.ty {
+                    MemberType::Message(v) => (self.message(p, i, m, v)),
+                    MemberType::Enum(v) => (self.enum_(p, i, m, v)),
+                }
             }
         }
     }
@@ -52,10 +54,6 @@ impl Protocols<'_> {
         m: &Member,
         v: &Message,
     ) -> impl Renderable {
-        let hue = match v.is_request {
-            true => C::request_hue,
-            false => C::event_hue,
-        };
         let keyword = match v.is_request {
             true => "request",
             false => "event",
@@ -72,9 +70,9 @@ impl Protocols<'_> {
                     }
                 }
                 "\n"
-                span .(C::keyword) .(hue) { (keyword) }
+                span .(C::keyword) { (keyword) }
                 " "
-                span .(C::member_name) .(hue) {
+                span .(C::member_name) {
                     a href=(self.member_link(p, i, m)) {
                         (m.name)
                     }
@@ -211,9 +209,9 @@ impl Protocols<'_> {
                     a href=(self.interface_link(p, i)) { (i.name) }
                 }
                 "\n"
-                span .(C::keyword) .(C::enum_hue) { "enum" }
+                span .(C::keyword) { "enum" }
                 " "
-                span .(C::member_name) .(C::enum_hue) {
+                span .(C::member_name) {
                     a href=(self.member_link(p, i, m)) {
                         (m.name)
                     }

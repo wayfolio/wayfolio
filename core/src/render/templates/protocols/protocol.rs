@@ -13,8 +13,9 @@ use {
 impl Protocols<'_> {
     pub(crate) fn protocol(&self, p: &Protocol, include_top: bool) -> impl Renderable {
         let anchor = self.protocol_anchor(p);
+        let class = include_top.then_some(C::protocol_header);
         maud! {
-            h1 id=(anchor) {
+            h1 .(class) id=(anchor) {
                 @if include_top {
                     a .(C::interface_protocol_link) href={"#"(C::top)} { "Go to top" }
                     br;

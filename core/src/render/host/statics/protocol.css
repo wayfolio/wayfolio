@@ -1,4 +1,25 @@
+.protocol_header {
+    margin-top: 3em;
+    border-top-width: 0.4em;
+    border-top-style: solid;
+    border-color: oklch(var(--code-secondary-lightness) 0 0);
+}
+.interface_header {
+    margin-top: 3em;
+    border-top-width: 0.3em;
+    border-top-style: solid;
+    border-color: oklch(var(--code-secondary-lightness) var(--border-chromaticity) var(--hue));
+}
+.member {
+    display: flow-root;
+    margin-top: 2.5em;
+    border-left-width: 0.2em;
+    border-left-style: solid;
+    border-color: oklch(var(--code-secondary-lightness) var(--border-chromaticity) var(--hue));
+}
 .message_signature {
+    margin: 0;
+    margin-bottom: 1em;
     padding: 1em;
     color: oklch(var(--code-secondary-lightness) 0 0);
     background-color: oklch(var(--code-bg-lightness) 0 0);
@@ -30,7 +51,10 @@
     background-color: oklch(var(--badge-bg-lightness) 0 0);
 }
 .message_body {
-    padding-left: 1.5em;
+    padding-left: 0.8em;
+}
+.toc {
+    margin-left: 0;
 }
 .interface_name {
     color: oklch(var(--highlight-lightness) var(--highlight-chromaticity) var(--hue));
