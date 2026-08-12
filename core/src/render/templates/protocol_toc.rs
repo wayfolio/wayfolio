@@ -10,7 +10,7 @@ pub(crate) fn protocol_toc(inline: bool, suites: &[Suite], ps: &[Protocol]) -> i
     maud! {
         div .(C::protocol_toc) {
             @for suite in suites {
-                div .(C::toc) {
+                div {
                     div .(C::suite_name) { (suite.name) }
                     (protocol_toc_(inline, &suite.protocols))
                 }

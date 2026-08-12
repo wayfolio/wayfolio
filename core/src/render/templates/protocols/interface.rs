@@ -37,7 +37,7 @@ impl Protocols<'_> {
                 }
             }
             @if i.members.is_not_empty() {
-                ul .(C::toc) {
+                ul .(C::unindented_toc) {
                     @for m in &i.members {
                         li {
                             span .(C::main_link) .(m.ty.hue()) {
