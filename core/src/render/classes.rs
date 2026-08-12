@@ -98,6 +98,7 @@ class! {
     top,
     type_hue,
     type_modifier_hue,
+    unindented_toc,
     url_input,
     url_render,
 }

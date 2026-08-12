@@ -35,7 +35,7 @@ impl Protocols<'_> {
                 }
             }
             @if p.interfaces.is_not_empty() {
-                ul .(C::toc) {
+                ul .(C::unindented_toc) {
                     @for i in &p.interfaces {
                         li {
                             span .(C::main_link) .(C::interface_hue) {
